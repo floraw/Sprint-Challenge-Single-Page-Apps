@@ -1,5 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import styled from 'styled-components';
+
+const SearchCard = styled.div`
+  background-color: #E7DEB5;
+  border: solid black 3px;
+  text-align: center;
+  width: 35%;
+  margin: 25px 0px;
+  padding 20px;
+`;
+
+const SearchWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
 
 export default function SearchForm() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -49,13 +66,15 @@ export default function SearchForm() {
         />
         <button type="submit">Search</button>
       </form>
-      <div className="search-results">
-        <ul>
+      <SearchWrapper>
           {searchResults.map(person => (
-            <li>{person.name}</li>
+            <SearchCard>
+              <img src={person.image} alt={person.name} />
+              <h3>{person.name}</h3>
+            </SearchCard>
+
           ))}
-        </ul>
-      </div>
+      </SearchWrapper>
      
     </section>
   );

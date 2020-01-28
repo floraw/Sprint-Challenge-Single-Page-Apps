@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import styled from 'styled-components';
+
+const CardStyle = styled.div`
+  border: solid black 3px;
+  padding: 30px;
+  margin: 20px;
+  background-color: #E7DEB5;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`;
 
 
 const CharacterCard = (props) => {
@@ -27,16 +38,16 @@ const CharacterCard = (props) => {
 
   const { name, status, species, image, episode, origin } = character;
   return (
-    <div className="character-card">
+    <CardStyle>
       <div className="image-wrapper">
-        <img src={image} />
+        <img src={image} alt={name} />
       </div>
       <div className="character-details">
         <h2>{name}</h2>
         <h4>Starring in {episode.length} episodes!</h4>
         <p>A {species} from planet {origin.name}, currently {status}</p>
       </div>
-    </div>
+    </CardStyle>
   )
 }
 
